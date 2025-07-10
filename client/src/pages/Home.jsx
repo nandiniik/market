@@ -15,7 +15,7 @@ const Home = () => {
       }}
     >
       <div className="bg-black bg-opacity-50 p-10 rounded-xl text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Groww </h1>
+        <h1 className="text-4xl font-bold ml-6 mb-4">Welcome to Groww </h1>
         <p className="mb-6">Invest Smartly. Securely. Instantly.</p>
         <div className="flex justify-center gap-4">
           <Button label="Login" onClick={() => navigate('/login')} className="p-button-rounded p-button-info" />
