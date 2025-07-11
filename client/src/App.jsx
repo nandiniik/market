@@ -8,6 +8,7 @@ import Home from './pages/Home';
 
 
 import { useNavigate } from 'react-router-dom';
+import Stocks from './pages/Stocks';
 // const navigate = useNavigate();
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/stocks" element={<Stocks />} />
       </Routes>
     </Router>
   );

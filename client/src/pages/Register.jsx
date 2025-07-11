@@ -40,7 +40,7 @@ const Register = () => {
           <label className="mt-3">Password</label>
           <Password value={password} onChange={(e) => setPassword(e.target.value)} feedback={false} />
           <Button label="Register" className="mt-4" onClick={handleRegister} />
-          <Button label="Go to Login" onClick={() => navigate('/')} className="mt-2" />
+          <Button label="Go to Login" onClick={() => navigate('/login')} className="mt-2" />
         </div>
       </Card>
     </div>

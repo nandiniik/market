@@ -20,6 +20,7 @@ const Home = () => {
         <div className="flex justify-center gap-4">
           <Button label="Login" onClick={() => navigate('/login')} className="p-button-rounded p-button-info" />
           <Button label="Register" onClick={() => navigate('/register')} className="p-button-rounded p-button-success" />
+          <Button label="Stocks" onClick={() => navigate('/Stocks')} className='p-button-rounded p-button-info'/>
         </div>
       </div>
     </div>
