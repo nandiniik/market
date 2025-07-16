@@ -62,11 +62,11 @@ let stocks = [
 // Function
 const updatePrices = () => {
   stocks = stocks.map(stock => {
-    const randomChange = +(Math.random() * 2 - 0.5).toFixed(2);   // -1 to +1
+    const randomChange = +(Math.random() * 3 - 2).toFixed(2);   // -1 to +1
     const newPrice = +(stock.Price + +randomChange).toFixed(2);
     const newChartData = [...stock.chartData, newPrice];
 
-    if(newChartData.length>50) newChartData.shift();
+    if(newChartData.length>30) newChartData.shift();
 
 
    
