@@ -1,0 +1,16 @@
+import mongoose from 'mongoose';
+
+const CoinSchema = new mongoose.Schema({
+  name: String,
+  symbol: String,
+  quantity: Number,
+  price: Number
+});
+
+const PortfolioSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  totalCryptoValue: Number,
+  coins: [CoinSchema]
+});
+
+export default mongoose.model('Portfolio', PortfolioSchema);

@@ -21,7 +21,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/api/register', { username, password });
+      const res = await axios.post('http://localhost:3001/api/auth/register', { username, password });
       toast.current.show({ severity: 'success', summary: 'Registered', detail: res.data.message });
       setTimeout(() => navigate('/'), 1500);
 

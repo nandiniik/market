@@ -30,11 +30,15 @@ const Login = () => {
 
   const handleLogin = async () => {
   try {
-    const res = await axios.post('http://localhost:3001/api/login', {
+    const res = await axios.post('http://localhost:3001/api/auth/login', {
 
       username,
       password,
     });
+
+        // Save user info
+    localStorage.setItem('username', res.data.user.username);
+    
     toast.current.show({ severity: 'success', summary: 'Login Success', detail: res.data.message });
     setTimeout(() => navigate('/dashboard'), 1500);
 
