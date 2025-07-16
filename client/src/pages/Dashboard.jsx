@@ -15,6 +15,7 @@ import axios from 'axios';
 import { Card } from 'primereact/card';
 import { ProgressBar } from 'primereact/progressbar';
 import { Tag } from 'primereact/tag';
+import Navbar from '../components/Navbar';
 
 const Dashboard = () => {
   const [crypto, setCrypto] = useState(null);
@@ -60,13 +61,17 @@ const Dashboard = () => {
     //     <p className="text-center">Loading your crypto portfolio...</p>
     //   )}
     // </div>
-
+    <><Navbar/>
     <div className="flex justify-content-center align-items-center min-h-screen">
+     
         <Card title="Welcome to the Dashboard!" className="w-25rem">
            <p>You are now logged in.</p>
          </Card>
-       </div>
-    );
+    </div>
+    </>
+  
+  );
+
 };
 
 export default Dashboard;
