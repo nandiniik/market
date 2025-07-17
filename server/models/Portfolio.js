@@ -1,3 +1,5 @@
+// server/models/Portfolio.js
+
 import mongoose from 'mongoose';
 
 const CoinSchema = new mongoose.Schema({
@@ -13,4 +15,5 @@ const PortfolioSchema = new mongoose.Schema({
   coins: [CoinSchema]
 });
 
-export default mongoose.model('Portfolio', PortfolioSchema);
+const Portfolio = mongoose.model('Portfolio', PortfolioSchema);
+export default Portfolio;

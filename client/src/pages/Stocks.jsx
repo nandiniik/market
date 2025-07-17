@@ -74,7 +74,7 @@ const Stocks = () => {
                     fill: true,
                     tension: 0.4,
                     // pointBackgroundColor:(_, i,arr) => i === arr.length - 1 ?  '#000' : 'transparent' ,  // black dot on last point               
-                    // pointHoverRadius: 4,
+                    pointHoverRadius: 4,
                     // pointRadius:  (_, i,arr ) => i === arr.length - 1 ? 4 : 2,  // only show last point            
                     
         
@@ -86,8 +86,8 @@ const Stocks = () => {
                 responsive: true, 
                 maintainAspectRatio: false, 
                 plugins: { legend: { display: false } },
-                scales: { x: { display: true }, y: { display: false, ticks: {callback: value => `₹${value}`} } },
-                animation: {duration:80000, easing: 'easeOutQuart'},
+                scales: { x: { display: false}, y: { display: true, ticks: {callback: value => `₹${value}`} } },
+                animation: {duration:10, easing: 'easeOutQuart'},
                 interaction: {intersect : false}
               }}
               className="w-full md:w-30rem"

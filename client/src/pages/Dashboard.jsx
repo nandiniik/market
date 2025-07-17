@@ -16,10 +16,21 @@ import { Card } from 'primereact/card';
 import { ProgressBar } from 'primereact/progressbar';
 import { Tag } from 'primereact/tag';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [crypto, setCrypto] = useState(null);
   const username = localStorage.getItem('username');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+    localStorage.removeItem('username');
+    navigate('/login'); // ✅ redirects to login
+  };
+
+
 
   useEffect(() => {
     if (!username) return;
@@ -29,20 +40,43 @@ const Dashboard = () => {
     axios.get(`http://localhost:3001/api/crypto/${username}`)
 
       .then(res => {
-        console.log('Portfolio response:', res.data);
-        setCrypto(res.data)
+        console.log('Full response:', res.data); //Log entire response
+        if (res.data) {
+          setCrypto(res.data);
+        } else{
+          console.error('No data in response');
+        }
+        
         })
       
-      .catch(err => console.error('API error:', err));
+      .catch(err => {
+        console.error('Full error:', err);
+        if (err.response){
+          console.error('Response data:',err.response.data);
+          console.error('Response status', err.response.status);
+        }
+      });
+      
   }, [username]);
+  
 
   return (
     <><Navbar/>
+    <div>
+    <div className="flex justify-end items-center mb-0">
+      <button label='Logout'
+            onClick={handleLogout}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+            Logout
+          </button>
+      </div>
 
-    <div className="p-6">
+    <div className="p-8" >
+      
         <h1 className="text-3xl font-bold mb-4 text-center text-blue-700">
           My Crypto Portfolio
         </h1>
+        
 
         {username && (
           <div className="mb-6 text-center text-lg">
@@ -72,8 +106,9 @@ const Dashboard = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center mt-6">Loading your crypto portfolio...</p>
+          <p className="text-center mt-0">Loading your crypto portfolio...</p>
         )}
+      </div>
       </div>
 
     </>
