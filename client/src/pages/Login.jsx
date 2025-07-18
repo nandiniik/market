@@ -56,7 +56,7 @@ const Login = () => {
   return (
     <><Navbar/>
     <div className="flex justify-content-center align-items-center min-h-screen"
-      style={{backgroundImage : "url('17973908.jpg')",}}>
+      style={{backgroundImage : "url('9638.jpg')",backgroundSize: "cover",    backgroundPosition: "center", backgroundRepeat: "no-repeat",  }}>
       <Toast ref={toast} />
       <Card title="Login to My Page" className="w-25rem">
         <div className="p-fluid">
@@ -64,7 +64,7 @@ const Login = () => {
           <InputText id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
 
           <label htmlFor="password" className="mt-3 mb-2">Password</label>
-          <Password id="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
+          <Password id="password" value={password} onChange={(e) => setPassword(e.target.value)} feedback={false} toggleMask />
 
           <Button label="Login" className="mt-4" onClick={handleLogin} />
           <Button label="Go to Register" severity="secondary" onClick={() => navigate('/register')} className="mt-2" />

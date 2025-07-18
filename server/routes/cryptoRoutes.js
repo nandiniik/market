@@ -37,7 +37,9 @@ const router = express.Router();
 // };
 
 // Route: GET /api/crypto/:username
-router.get('/:username', async (req, res) => {
+router.get('/:username', );
+
+const getUser =()=> async (req, res) => {
   const username = req.params.username;
   
 try {
@@ -57,8 +59,6 @@ catch (err) {
   }
 
 
-});
-
-
+}
 
 export default router;

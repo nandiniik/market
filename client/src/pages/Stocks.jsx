@@ -4,6 +4,7 @@ import { Card } from 'primereact/card';
 import { Chart } from 'primereact/chart';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
+import Navbar from '../components/Navbar';
 
 
 
@@ -31,8 +32,65 @@ const Stocks = () => {
 
 
 
+  // Memoize chart data to prevent unnecessary re-renders
+  const getChartData = (chartData) => ({
+    labels: chartData.map((_, i) => `T${i+1}`),
+    datasets: [
+      {
+        label: 'Price',
+        data: chartData,
+        borderColor: '#4bc0c0',
+        backgroundColor: 'rgba(75, 192, 192, 0.1)',
+        fill: true,
+        tension: 0.1,
+        borderWidth: 2,
+        pointRadius: 0, 
+        pointHoverRadius: 0,
+      },
+    ],
+  });
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { 
+      legend: { display: false },
+      tooltip: {
+        mode: 'index',
+        intersect: false
+      }
+    },
+    scales: { 
+      x: { 
+        display: false,
+        grid: {
+          display: false
+        }
+      }, 
+      y: { 
+        display: true, 
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)'
+        },
+        ticks: {
+          callback: value => `₹${value}`
+        } 
+      } 
+    },
+    animation: {
+      duration: 1000, 
+      easing: 'easeOutQuart'
+    },
+    interaction: {
+      intersect: false,
+      mode: 'nearest'
+    }
+  };
+
+
 
   return (
+    <><Navbar/>
     
     <div className="p-8 bg-gray-50 min-h-screen">
       <h1 className="text-3xl font-bold text-blue-600 mb-6">Crypto Screener</h1>
@@ -61,7 +119,7 @@ const Stocks = () => {
             
 
             
-            <Chart
+            {/* <Chart
               type="line"
               data={{
                 labels: coin.chartData.map((_, i) => `T${i+1}`),
@@ -91,7 +149,15 @@ const Stocks = () => {
                 interaction: {intersect : false}
               }}
               className="w-full md:w-30rem"
-            />
+            /> */}
+
+            <div className="h-48 mt-4">
+              <Chart
+                type="line"
+                data={getChartData(coin.chartData)}
+                options={chartOptions}
+              />
+            </div>
 
             
 
@@ -101,7 +167,9 @@ const Stocks = () => {
       </div>
       
     </div>
+  </>  
   );
+  
 };
 
 export default Stocks;
